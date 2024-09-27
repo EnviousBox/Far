@@ -223,7 +223,7 @@ public class StringReplacer : IStringReplacer
     /// <param name="original">The string to be searched.</param>
     /// <param name="toBeReplaced">The string to be replaced.</param>
     /// <param name="replacementString">The replacement string.</param>
-    /// <returns>The modified IEnumerable of strings if the string to be replaced was found; The unmodified original IEnumerable otherwise.</returns>
+    /// <returns>The modified string if the string to be replaced was found; The unmodified original string otherwise.</returns>
     public string ReplacePartialMatch(string original, string toBeReplaced, string replacementString)
     {
         string output = original;
