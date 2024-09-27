@@ -21,7 +21,7 @@ using System.Linq;
 using System.Text;
 
 using AlastairLundy.Extensions.System;
-
+using AlastairLundy.Extensions.System.Matching;
 using Far.Library.Abstractions;
 using Far.Library.Models;
 
@@ -228,7 +228,7 @@ public class StringReplacer : IStringReplacer
     {
         string output = original;
 
-        if (output.ToLower().Contains(toBeReplaced.ToLower()))
+        if (output.IsAPartialMatch(toBeReplaced))
         {
             string tempOutput = output.ToLower().Replace(toBeReplaced.ToLower(), replacementString);
 

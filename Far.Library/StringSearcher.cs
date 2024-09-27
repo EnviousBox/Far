@@ -93,7 +93,7 @@ public class StringSearcher : IStringSearcher
                         ResultPositions = stringPositionFinder.GetStringPositions(str, s, false).ToList(),
                     });
                 }
-                else if (ContainsPartialMatch(new string[] { str }, s) == true)
+                else if (str.IsAPartialMatch(s) == true)
                 {
                     partialMatches.Add(new SearchResultItem
                     {
@@ -113,7 +113,7 @@ public class StringSearcher : IStringSearcher
                     ResultPositions = stringPositionFinder.GetStringPositions(contentsToBeSearched, s, false).ToList()
                 });
             }
-            else if (ContainsPartialMatch(new string[] { contentsToBeSearched }, s))
+            else if (contentsToBeSearched.IsAPartialMatch(s) == true)
             {
                 partialMatches.Add(new SearchResultItem
                 {
