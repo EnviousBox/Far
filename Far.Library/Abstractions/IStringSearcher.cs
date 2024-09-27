@@ -25,10 +25,6 @@ namespace Far.Library.Abstractions;
 
 public interface IStringSearcher
 {
-    public bool ContainsPartialMatch(IEnumerable<string> contentsToBeSearched, string s);
-    
-    public bool ContainsExactMatch(IEnumerable<string> contentsToBeSearched, string s);
-
     public SearchResult FindStrings(string contentsToBeSearched, string s);
     
     public SearchResult FindStrings(IEnumerable<string> contentsToBeSearched, string s);

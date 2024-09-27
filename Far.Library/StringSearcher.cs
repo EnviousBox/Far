@@ -40,33 +40,6 @@ public class StringSearcher : IStringSearcher
     {
         this.stringPositionFinder = stringPositionFinder; 
     }
-    
-    /// <summary>
-    /// Returns whether an IEnumerable of strings contains an exact match of a specified string.
-    /// </summary>
-    /// <param name="contentsToBeSearched">The IEnumerable to be searched.</param>
-    /// <param name="s">The string to search for.</param>
-    /// <returns>True if a case-sensitive exact match is found; False otherwise.</returns>
-    public bool ContainsExactMatch(IEnumerable<string> contentsToBeSearched, string s)
-    {
-        foreach (string contentLine in contentsToBeSearched)
-        {
-            if (contentLine.Equals(s))
-            {
-                return true;
-            }
-            
-            foreach (string word in contentLine.Split(' '))
-            {
-                if (word.Equals(s))
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
 
     /// <summary>
     /// Searches a string for a specified string and returns the results of the search with any partial and exact matches.
@@ -237,33 +210,6 @@ public class StringSearcher : IStringSearcher
             result = null;
             return false;
         }
-    }
-
-    /// <summary>
-    /// Determines whether a partial match to a string is found within an IEnumerable of string.
-    /// </summary>
-    /// <param name="contentsToBeSearched">The IEnumerable to be searched.</param>
-    /// <param name="s">The string to search for.</param>
-    /// <returns>True if a case-insensitive partial match is found; False otherwise.</returns>
-    public bool ContainsPartialMatch(IEnumerable<string> contentsToBeSearched, string s)
-    {
-        foreach (string contentLine in contentsToBeSearched)
-        {
-            if (contentLine.IsAPartialMatch(s))
-            {
-                return true;
-            }
-
-            foreach (string word in contentLine.Split(' '))
-            {
-                if (word.IsAPartialMatch(s))
-                {
-                    return true;
-                } 
-            }
-        }
-
-        return false;
     }
     
 }
