@@ -117,32 +117,6 @@ public class StringReplacer : IStringReplacer
         
         return output;
     }
-    
-    /// <summary>
-    /// Replaces exact matches of a specified string in an IEnumerable of strings with a specified replacement string.
-    /// </summary>
-    /// <param name="enumerable">The IEnumerable of strings to be searched.</param>
-    /// <param name="toBeReplaced">The string to be replaced.</param>
-    /// <param name="replacementString">The replacement string.</param>
-    /// <returns>The modified IEnumerable of strings if the string to be replaced was found; The unmodified original IEnumerable otherwise.</returns>
-    public IEnumerable<string> ReplaceExactMatch(IEnumerable<string> enumerable, string toBeReplaced, string replacementString)
-    {
-        List<string> output = new();
-        
-        foreach (string str in enumerable)
-        {
-            string tempStr = str;
-            
-            if (str.Contains(toBeReplaced))
-            {
-                tempStr = str.Replace(toBeReplaced, replacementString);
-            }
-            
-            output.Add(tempStr);
-        }
-
-        return output;
-    }
 
     /// <summary>
     /// Replaces partial matches of a specified string within a string with a specified replacement string.
