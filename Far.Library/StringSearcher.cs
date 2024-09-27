@@ -85,7 +85,7 @@ public class StringSearcher : IStringSearcher
 
             foreach (string str in spaceSeparatedStrings)
             {
-                if (ContainsExactMatch(new string[] { str }, s) == true)
+                if (str.Equals(s) == true)
                 {
                     exactMatches.Add(new SearchResultItem
                     {
@@ -105,7 +105,7 @@ public class StringSearcher : IStringSearcher
         }
         else
         {
-            if (ContainsExactMatch(new string[] { contentsToBeSearched }, s))
+            if (contentsToBeSearched.Equals(s) == true)
             {
                 exactMatches.Add(new SearchResultItem
                 {
