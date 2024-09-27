@@ -35,11 +35,6 @@ namespace Far.Library;
 public class StringSearcher : IStringSearcher
 {
     protected IStringPositionFinder stringPositionFinder;
-
-    public StringSearcher()
-    {
-        stringPositionFinder = new StringPositionFinder();
-    }
     
     public StringSearcher(IStringPositionFinder stringPositionFinder)
     {
