@@ -27,15 +27,7 @@
 
     <ItemGroup>
       <PackageReference Include="AlastairLundy.Extensions.Collections" Version="5.*" />
-      <PackageReference Include="AlastairLundy.Extensions.System" Version="5.2.0-preview.2" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="..\..\LICENSE.txt">
-        <Link>LICENSE.txt</Link>
-          <PackagePath>LICENSE.txt</PackagePath>
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+      <PackageReference Include="AlastairLundy.Extensions.System" Version="5.2.0" />
     </ItemGroup>
 
     <ItemGroup>
