@@ -25,9 +25,7 @@ public interface IStringReplacer
     public string Replace(string original, StringPosition itemPositionToReplace, string replacement);
     public string Replace(string original, SearchResultItem itemToBeReplaced, string replacement);
     public IEnumerable<string> Replace(IEnumerable<string> enumerable, SearchResultItem itemToBeReplaced, string replacement);
-
-    public string ReplaceExactMatch(string original, string toBeReplaced, string replacementString);
-
+    
     public IEnumerable<string> ReplaceExactMatch(IEnumerable<string> enumerable, string toBeReplaced,
         string replacementString);
 

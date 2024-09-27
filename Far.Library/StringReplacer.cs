@@ -117,25 +117,6 @@ public class StringReplacer : IStringReplacer
         
         return output;
     }
-
-    /// <summary>
-    /// Replaces exact matches of a specified string within a string with a specified replacement string.
-    /// </summary>
-    /// <param name="original">The string to be searched.</param>
-    /// <param name="toBeReplaced">The string to be replaced.</param>
-    /// <param name="replacementString">The replacement string.</param>
-    /// <returns>The modified string if the string contained the string to be replaced; The original string otherwise.</returns>
-    public string ReplaceExactMatch(string original, string toBeReplaced, string replacementString)
-    {
-        string output = original;
-        
-        if (original.Contains(toBeReplaced))
-        {
-            output = original.Replace(toBeReplaced, replacementString);
-        }
-        
-        return output;
-    }
     
     /// <summary>
     /// Replaces exact matches of a specified string in an IEnumerable of strings with a specified replacement string.
@@ -154,7 +135,7 @@ public class StringReplacer : IStringReplacer
             
             if (str.Contains(toBeReplaced))
             {
-                tempStr = ReplaceExactMatch(str, toBeReplaced, replacementString);
+                tempStr = str.Replace(toBeReplaced, replacementString);
             }
             
             output.Add(tempStr);
