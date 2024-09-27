@@ -31,31 +31,29 @@ namespace Far.Library;
 /// </summary>
 public class StringPositionFinder : IStringPositionFinder
 {
+    protected IStringIndexFinder stringIndexFinder;
+    public StringPositionFinder()
+    {
+        stringIndexFinder = new StringIndexFinder();
+    }
+
+    public StringPositionFinder(IStringIndexFinder stringIndexFinder)
+    {
+        this.stringIndexFinder = stringIndexFinder;
+    }
+
     protected IEnumerable<CharPosition> SearchForChar(string input, char expected, int lineNumber, bool ignoreCase)
     {
         List<CharPosition> positions = new List<CharPosition>();
         positions.TrimExcess();
-        
-        for(int i = 0; i < input.Length; i++)
+
+        int[] indexes = stringIndexFinder.GetCharIndexes(input, expected, ignoreCase).ToArray();
+
+        foreach (int index in indexes)
         {
-            char c = input[i];
-            
-            if (ignoreCase)
-            {
-                if (c.ToString().ToLower() == expected.ToString().ToLower())
-                {
-                    positions.Add(new CharPosition(lineNumber, i));
-                }
-            }
-            else
-            {
-                if (c == expected)
-                {
-                    positions.Add(new CharPosition(lineNumber, i));
-                }
-            }
+            positions.Add(new CharPosition(lineNumber, index));
         }
-        
+
         return positions;
     }
     
@@ -128,42 +126,26 @@ public class StringPositionFinder : IStringPositionFinder
     protected IEnumerable<StringPosition> SearchForString(string str, string expected, bool ignoreCase, int lineNumber)
     {
         List<StringPosition> positions = new();
+        
+        int[] indexes = stringIndexFinder.GetStringIndexes(str, expected, ignoreCase).ToArray();
 
-        string[] words = str.Split(' ');
-
-        foreach (string word in words)
+        if (indexes.Any() && indexes[0] != -1)
         {
-            if (word.Contains(expected))
+            foreach (int index in indexes)
             {
-                int column;
-
-                if (ignoreCase == true)
+                positions.Add(new StringPosition()
                 {
-                    column = str.IndexOf(expected, StringComparison.OrdinalIgnoreCase);
-                }
-                else
-                {
-                    column = str.IndexOf(expected, StringComparison.Ordinal);
-                }
-
-                CharPosition startPosition = new(lineNumber, column);
-                CharPosition endPosition;
-
-                for (int i = column + 1; i < str.Length; i++)
-                {
-                    if (str[i] == ' ')
+                    EndPosition = new CharPosition()
                     {
-                        endPosition = new CharPosition(lineNumber, i - 1);
-
-                        positions.Add(new StringPosition
-                        {
-                            EndPosition = endPosition,
-                            StartPosition = startPosition,
-                        });
-
-                        break;
+                        LineNumber = lineNumber,
+                        ColumnNumber = index + expected.Length,
+                    },
+                    StartPosition = new CharPosition()
+                    {
+                        LineNumber = lineNumber,
+                        ColumnNumber = index
                     }
-                }
+                });
             }
         }
         
