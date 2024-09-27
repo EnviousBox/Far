@@ -18,17 +18,13 @@
 using System.Collections.Generic;
 using Far.Library.Models;
 
-namespace Far.Library.Abstractions;
+namespace Far.Library.Abstractions.Replacers;
 
 public interface IStringReplacer
 {
     public string Replace(string original, StringPosition itemPositionToReplace, string replacement);
     public string Replace(string original, SearchResultItem itemToBeReplaced, string replacement);
     public IEnumerable<string> Replace(IEnumerable<string> enumerable, SearchResultItem itemToBeReplaced, string replacement);
-    
-    public string ReplaceCharacter(string original, char toBeReplaced, char replacementChar);
-
-    public IEnumerable<string> ReplaceCharacter(IEnumerable<string> enumerable, char toBeReplaced, char replacementChar);
 
     public string ReplaceExactMatch(string original, string toBeReplaced, string replacementString);
 
