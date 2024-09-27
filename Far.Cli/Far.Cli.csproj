@@ -21,8 +21,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\..\LICENSE.txt">
-        <Link>LICENSE.txt</Link>
+      <Content Include="..\COPYING">
+        <Link>COPYING</Link>
+      </Content>
+      <Content Include="..\COPYING.LESSER">
+        <Link>COPYING.LESSER</Link>
       </Content>
     </ItemGroup>
 
