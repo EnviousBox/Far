@@ -15,16 +15,16 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Far.Library.Abstractions;
 
 public interface IStringIndexFinder
 {
-    public IEnumerable<int> GetStringIndex(IEnumerable<string> strings, string expected, bool ignoreCase);
-    public IEnumerable<int> GetStringIndex(string toBeSearched, string expected, bool ignoreCase);
+    public IEnumerable<int> GetStringIndexes(string toBeSearched, string expected, bool ignoreCase);
+    public IEnumerable<int> GetStringIndexes(IEnumerable<string> strings, string expected, bool ignoreCase);
+    public IEnumerable<int> GetCharIndexes(IEnumerable<string> strings, char expected, bool ignoreCase);
     
-    public IEnumerable<int> GetCharIndex(IEnumerable<string> strings, char expected, bool ignoreCase);
-    public IEnumerable<int> GetCharIndex(string toBeSearched, char expected, bool ignoreCase);
-
+    public IEnumerable<int> GetCharIndexes(string toBeSearched, char expected, bool ignoreCase);
 }
