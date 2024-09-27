@@ -19,8 +19,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using AlastairLundy.Extensions.Collections.IEnumerables;
-
+using AlastairLundy.Extensions.Collections.IEnumerables.Indexes.Specializations;
 using AlastairLundy.Extensions.System.Indexes;
 
 using Far.Library.Abstractions;
@@ -29,8 +28,7 @@ namespace Far.Library;
 
 public class StringIndexFinder : IStringIndexFinder
 {
-
-
+    
     /// <summary>
     /// 
     /// </summary>
@@ -45,12 +43,12 @@ public class StringIndexFinder : IStringIndexFinder
 
     public IEnumerable<int> GetStringIndexes(IEnumerable<string> toBeSearched, string expected, bool ignoreCase)
     {
-        return toBeSearched.IndexesOf(expected, ignoreCase);
+        return toBeSearched.StringIndexesOf(expected, ignoreCase);
     }
 
     public IEnumerable<int> GetCharIndexes(IEnumerable<string> toBeSearched, char expected, bool ignoreCase)
     {
-        return toBeSearched.IndexesOf(expected, ignoreCase);
+        return toBeSearched.CharIndexesOf(expected, ignoreCase);
     }
 
 
