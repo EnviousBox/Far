@@ -258,8 +258,6 @@ public class StringSearcher : IStringSearcher
             {
                 return true;
             }
-            
-            
 
             foreach (string word in contentLine.Split(' '))
             {
