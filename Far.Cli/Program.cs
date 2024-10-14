@@ -19,10 +19,13 @@ using Spectre.Console.Cli;
 
 CommandApp commandApp = new CommandApp();
 
-commandApp.Configure(config =>{
-   
-    
-    
+commandApp.Configure(config =>
+{
+
+
+    config.
+    config.UseAssemblyInformationalVersion();
 });
+
 
 return commandApp.Run(args);
